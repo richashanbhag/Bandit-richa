@@ -1,10 +1,13 @@
 # Bandit-richa
-This repository contains writeup for helping in solving bandits by Richa
+This repository contains writeup for helping in solving bandits by Richa Ganesh Shanbhag  
 ## Level 0
-"ssh" is used for remote login into a server.  
+"ssh" is used for remote login into a server and for executing commands on a remote machine.    
+"bandit.labs.overthewire.org" is the host and "2220" is the port.  
 "ls" shows the list of available files  
 "file <filename>" shows the type of file  
-"cat <filename>" shows the content of the file  
+"cat <filename>" shows the content of the file 
+exit -d is used to close the connection and exit.  
+We need to login the server using the command ssh bandit0@bandit.labs.overthewire.org -p 2220. Using the ls command, we can get  the list of files. We can use cat command to read the content of readme file.
 ### Commands:
 ```
 ssh bandit0@bandit.labs.overthewire.org -p 2220  
@@ -16,7 +19,7 @@ Password for Level 1-
 NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
 ```
 ## Level 1
-The given filename is -
+The given filename is '-'. We need to login the server using the command ssh bandit1@bandit.labs.overthewire.org -p 2220 and use the password retrieved in the previous level. Using the ls command, we can get  the list of files. We can use cat command to read the content of - file. We cannot just use cat - . Instead we should use cat ./- 
 ### Commands:
 ```
 ssh bandit1@bandit.labs.overthewire.org -p 2220
