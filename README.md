@@ -13,6 +13,7 @@ We need to login the server using the command ssh bandit0@bandit.labs.overthewir
 ssh bandit0@bandit.labs.overthewire.org -p 2220  
 ls
 cat readme
+exit -d
 ```
 Password for Level 1-
 ```
@@ -25,6 +26,7 @@ The required filename is '-'. We need to login the server using the command ssh 
 ssh bandit1@bandit.labs.overthewire.org -p 2220
 ls
 cat ./-
+exit -d
 ```
 Password for level 2 is
 ```
@@ -37,6 +39,7 @@ The required filename is 'spaces in this filename'. We need to login the server 
 ssh bandit2@bandit.labs.overthewire.org -p 2220
 ls
 cat spaces\ in\ this\ filename
+exit -d
 ```
 Password for level 3-
 ```
@@ -52,6 +55,7 @@ ssh bandit3@bandit.labs.overthewire.org -p 2220
 cd inhere
 ls -a
 cat .hidden
+exit -d
 ```
 Password for level 4-
 ```
@@ -67,12 +71,27 @@ cd inhere
 ls
 file ./*
 cat ./-file07
+exit -d
 ```
 Password for level 5
 ```
 lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
 ```
 ## Level 5
-The required file is human readable file that means the ascii text file and 1033 bytes in size and not executable  
-We need to first change the directory to inhere directory. Then using the ls command, we can get the list of files
+The required file is human readable file that means the ascii text file and 1033 bytes in size and not executable. find -attribute command can be used to filter the resulting files. We can use the attribute ! -executable to get the non executable files and -size 1033c gives us the list of files whose size is 1033 bytes and then, we can use find to find the file type.
+We need to first change the directory to inhere directory. Then using the ls command, we can get the list of files. Using the find attribute commands, we can filter the results and get the desired file  
+### Commands
+```
+ssh bandit5@bandit.labs.overthewire.org -p 2220  
+cd inhere  
+ls
+find ! -executable -size 1033c
+file ./maybehere07/.file2
+cat ./maybehere07/.file2
+exit -d
+```
+Password for level 6
+```
+P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+```
 
