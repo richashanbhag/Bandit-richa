@@ -220,3 +220,46 @@ Password for level 13
 ```
 wbWdlBxEir4CaE8LaPhauuOo6pwRmrDw
 ```
+## Level 13
+The password for the next level is stored in /etc/bandit_pass/bandit14 and can only be read by user bandit14. For this level, we don’t get the next password, but we get a private SSH key that can be used to log into the next level. First, we can get the private SSH key by using ls command. Then, we connect to the server using ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220 and get the password using cat command
+### Commands
+```
+ssh bandit13@bandit.labs.overthewire.org -p 2220
+ls
+ssh -i sshkey.private bandit14@bandit.labs.overthewire.org -p 2220
+cat /etc/bandit_pass/bandit14
+exit -d
+```
+Password for level 14
+```
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+```
+## Level 14
+The password for the next level can be retrieved by submitting the password of the current level to port 30000 on localhost. We can connect to localhost on port 30000 using nc (netcat) command and then, submit the password of level 14.
+### Commands
+```
+ssh bandit14@bandit.labs.overthewire.org -p 2220
+nc localhost 30000
+fGrHPx402xGC7U7rXKDaxiWFTOiF0ENq
+exit -d
+```
+Password for level 15
+```
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+```
+## Level 15
+The password for the next level can be retrieved by submitting the password of the current level to port 30001 on localhost using SSL encryption. OpenSSL is an all-around cryptography library and we can use openssl s_client -connect <hostname>:<port> command to connect.
+### Commands
+```
+ssh bandit15@bandit.labs.overthewire.org -p 2220
+openssl s_client -connect localhost:30001
+jN2kgmIXJ6fShzhT2avhotn4Zcka6tnt
+exit -d
+```
+Password for level 16
+```
+JQttfApK4SeyHwDlI9SXGR50qclOAil1
+```
+## Level 16
+The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.   
+nmap scans networks and ports. We can check all the ports which have a server listening to them in the range 31000 to 32000.  Next we try to connect to each of the above ports with openssl s_client -connect localhost:<port> command. Port 31790 asks for the password and returns an RSA PRIVATE KEY, which is the required port. We  can store the key in a file in the tmp directory. To read the key into the file, any text editor can be used. We can use  vim for which we type vim <filename> and then press 'i' to enter into inserting mode. After typing, we press 'esc' to stop inserting. Then type :wq to save and exit the file.
