@@ -262,4 +262,56 @@ JQttfApK4SeyHwDlI9SXGR50qclOAil1
 ```
 ## Level 16
 The credentials for the next level can be retrieved by submitting the password of the current level to a port on localhost in the range 31000 to 32000. First find out which of these ports have a server listening on them. Then find out which of those speak SSL and which don’t. There is only 1 server that will give the next credentials, the others will simply send back to you whatever you send to it.   
-nmap scans networks and ports. We can check all the ports which have a server listening to them in the range 31000 to 32000.  Next we try to connect to each of the above ports with openssl s_client -connect localhost:<port> command. Port 31790 asks for the password and returns an RSA PRIVATE KEY, which is the required port. We  can store the key in a file in the tmp directory. To read the key into the file, any text editor can be used. We can use  vim for which we type vim <filename> and then press 'i' to enter into inserting mode. After typing, we press 'esc' to stop inserting. Then type :wq to save and exit the file.
+nmap  commands scans networks and ports. We can check all the ports which have a server listening to them in the range 31000 to 32000.  Next we try to connect to each of the above ports with openssl s_client -connect localhost:<port> command. Port 31790 asks for the password and returns an RSA PRIVATE KEY, which is the required port. We  can store the key in a file in the tmp directory. To read the key into the file, any text editor can be used. We can use  vim for which we type vim <filename> and then press 'i' to enter into inserting mode. After typing, we press 'esc' to stop inserting. Then type :wq to save and exit the file. If we try to connect, we get an error message saying 'Permissions 0664 for 'private16.key' are too open. We can use chmod 400 to get the user read permission, and removes all other permissions and then read the password using cat command.
+### Commands
+```
+ssh bandit16@bandit.labs.overthewire.org -p 2220
+nmap localhost -p31000-32000
+openssl s_client -connect localhost:31046
+openssl s_client -connect localhost:31518
+openssl s_client -connect localhost:31691
+openssl s_client -connect localhost:31790
+mkdir /tmp/randomsshkey
+cd /tmp/randomsshkey
+touch private16.key
+ls
+vim private16.key
+i
+<insert the rsa private key>
+<press escape>
+:wq
+ssh -i private16.key bandit17@bandit.labs.overthewire.org -p 2220
+chmod 400 private16.key
+ssh -i private16.key bandit17@bandit.labs.overthewire.org -p 2220
+cat /etc/bandit_pass/bandit17
+exit-d
+```
+Password for level 17
+```
+VwOSWtCA7lRKkTfbr2IDh6awj9RNZM5e
+```
+## Level 17
+There are 2 files in the homedirectory: passwords.old and passwords.new. The password for the next level is in passwords.new and is the only line that has been changed between passwords.old and passwords.new. To identify the differences in both the files, we can use diff command.
+### Commands
+```
+ssh bandit17@bandit.labs.overthewire.org -p 2220
+ls
+diff passwords.new passwords.old
+exit -d
+```
+Password for level 18
+```
+hga5tuuCLF6fFzUpnagiMN8ssu9LFrdg
+```
+## Level 18
+The password for the next level is stored in a file readme in the homedirectory. Unfortunately, someone has modified .bashrc to log you out when you log in with SSH. When we login using ssh bandit18@bandit.labs.overthewire.org -p 2220, we get a "Byebye!" message and get logged out. We can use option -t which forces a pseudo terminal allocation. 
+### Commands 
+ssh bandit18@bandit.labs.overthewire.org -p 2220
+ssh bandit18@bandit.labs.overthewire.org -p 2220 ls
+ssh bandit18@bandit.labs.overthewire.org -p 2220 cat readme
+exit -d
+```
+Password for level 19
+```
+awhqfNnAbc1naukrpqDYcF95h7HoMTrC
+```
