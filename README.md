@@ -13,11 +13,11 @@ We need to login the server using the command ssh bandit0@bandit.labs.overthewir
 ssh bandit0@bandit.labs.overthewire.org -p 2220  
 ls
 cat readme
-exit -d
+exit 
 ```
 Password for Level 1-
 ```
-NH2SXQwcBdpmTEzi3bvBHMM9H66vVXjL
+ZjLjTmM6FvvyRnrb2rfNWOZOTa6ip5If
 ```
 ## Level 1
 The required filename is '-'. We need to login the server using the command ssh bandit1@bandit.labs.overthewire.org -p 2220 and use the password retrieved in the previous level. Using the ls command, we can get  the list of files. We can use cat command to read the content of - file. We cannot just use cat - . Instead we should use cat ./- 
@@ -26,11 +26,11 @@ The required filename is '-'. We need to login the server using the command ssh 
 ssh bandit1@bandit.labs.overthewire.org -p 2220
 ls
 cat ./-
-exit -d
+exit 
 ```
 Password for level 2 is
 ```
-rRGizSaX8Mk1RTb1CNQoXTcYZWU6lgzi
+263JGJPfgU6LtdEvgfWU1XP5yac29mFx
 ```
 ## Level 2
 The required filename is 'spaces in this filename'. We need to login the server using the command ssh bandit2@bandit.labs.overthewire.org -p 2220 and use the password retrieved in the previous level. Using the ls command, we can get  the list of files. We can use cat command to read the content of spaces in this filename file. We cannot just use cat spaces in this filename as it will think that these all are different files. Instead we should use cat spaces\ in\ this\ filename to show that the filename has spaces in it.
@@ -39,11 +39,11 @@ The required filename is 'spaces in this filename'. We need to login the server 
 ssh bandit2@bandit.labs.overthewire.org -p 2220
 ls
 cat spaces\ in\ this\ filename
-exit -d
+exit 
 ```
 Password for level 3-
 ```
-aBZ0W5EmUfAf7kHTQeOwd8bauFJ2lAiG
+MNk8KNH3Usiio41PRUEoDFPqfxLPlSmx
 ```
 ## Level 3
 cd command is used to change the working directory  
@@ -55,11 +55,11 @@ ssh bandit3@bandit.labs.overthewire.org -p 2220
 cd inhere
 ls -a
 cat .hidden
-exit -d
+exit 
 ```
 Password for level 4-
 ```
-2EW7BBsr6aMMoJ2HjW067dm8EgX26xNe
+2WmrDFRmJIq3IPxneAaMGhap0pFhF3NJ
 ```
 ## Level 4
 The required file is human readable file that means the ascii text file.  
@@ -71,11 +71,11 @@ cd inhere
 ls
 file ./*
 cat ./-file07
-exit -d
+exit 
 ```
 Password for level 5
 ```
-lrIWWI6bB37kxfiCQZqUdOIYfr6eEeqR
+4oQYVPkxZOOEOO5pTW81FB8j8lxXGUQw
 ```
 ## Level 5
 The required file is human readable file that means the ascii text file and 1033 bytes in size and not executable. find -attribute command can be used to filter the resulting files. We can use the attribute ! -executable to get the non executable files and -size 1033c gives us the list of files whose size is 1033 bytes and then, we can use find to find the file type.
@@ -88,11 +88,11 @@ ls
 find ! -executable -size 1033c
 file ./maybehere07/.file2
 cat ./maybehere07/.file2
-exit -d
+exit 
 ```
 Password for level 6
 ```
-P4L4vucdmLnm8I7Vl7jG1ApGSfjYKqJU
+HWasnPhtq9AVKe0dmk45nxy20cvUa6EG
 ```
 ## Level 6
 The required file is stored somewhere on the server has all of the following properties:owned by user bandit7, owned by group bandit and 33 bytes in size. We can find the file using find -attribute. We can use find / to Search the entire server and and type f to search for files. We can sort the resulting files using find -user bandit7 to get the files owned by user bandit 7 and -group bandit6 to get the files which are owned by group bandit6 and -size 33c to get the list of files whose size is 33 bytes. To hide the permission denied messages, we can append 2>/dev/null.
@@ -102,11 +102,11 @@ ssh bandit6@bandit.labs.overthewire.org -p 2220
 find / -type f -user bandit7 -group bandit6 -size 33c
 find / -type f -user bandit7 -group bandit6 -size 33c 2>/dev/null
 cat /var/lib/dpkg/info/bandit7.password
-exit -d
+exit 
 ```
 Password for level 7
 ```
-z7WtoNQU2XfjmMtWA8u5rN4vzqu4v99S
+morbNTDkSW6jIlUc0ymOdMaLnOlFVAaj
 ```
 ## Level 7
 The password is stored in the file data.txt next to the word millionth. We can use the grep command to find the string millionth in the file.
@@ -115,11 +115,11 @@ The password is stored in the file data.txt next to the word millionth. We can u
 ssh bandit7@bandit.labs.overthewire.org -p 2220
 ls
 grep millionth data.txt
-exit -d
+exit 
 ```
 Password for level 8
 ```
-TESKZC0XvTetK0S9xNwm25STk5iWrBvP
+dfwvzFQi4mU0wfNbFOe9RoWskMLg7eEc
 ```
 ## Level 8
 The password is stored in the file data.txt and only occurs once. sort command sorts the contents of a text file and pipe command is used to when output will serve as input to the next command. uniq -u command can be used to command remove any search result if that result is an exact duplicate of the previous result. So, we can serve the output of sort command as input to the uniq command.
@@ -128,11 +128,11 @@ The password is stored in the file data.txt and only occurs once. sort command s
 ssh bandit8@bandit.labs.overthewire.org -p 2220  
 ls  
 sort data.txt | uniq -u
-exit -d
+exit 
 ```
 Password for level 9
 ```
-EN632PlfYiZbn3PhVK3XOGSlNInNE00t
+4CKMh1JI91bUIZZPXDqGanal4xvAg0JM
 ```
 ## Level 9
 The password is stored in the file data.txt and is in one of the few human-readable strings, preceded by several ‘=’ characters. strings command is used to extract readable strings from a binary file. We can extract the human readable strings from the file using string command and use this output as input in the grep ==== command.
@@ -141,11 +141,11 @@ The password is stored in the file data.txt and is in one of the few human-reada
 ssh bandit9@bandit.labs.overthewire.org -p 2220  
 ls   
 strings data.txt | grep ====
-exit -d
+exit 
 ```
 Password for level 10
 ```
-G7w8LIi6J3kTb8A7j9LgrywtEUlyyp6s
+FGUW5ilLVJrxX9kMYMmlN4MgbpfMiqey
 ```
 ## Level 10
 The password is stored in the file data.txt and is as base64 encoded data. echo command is used to display the text passed in as an argument.base64 -d command is used to decode the base64 encoded data. We can use the encoded data as input for the base64 -d command.
@@ -155,11 +155,11 @@ ssh bandit10@bandit.labs.overthewire.org -p 2220
 ls
 cat data.txt
 echo 'VGhlIHBhc3N3b3JkIGlzIDZ6UGV6aUxkUjJSS05kTllGTmI2blZDS3pwaGxYSEJNCg==' | base64 -d
-exit -d
+exit 
 ```
 Password for level 11
 ```
-6zPeziLdR2RKNdNYFNb6nVCKzphlXHBM
+dtR173fZKb0RRsDFSGsg2RWnpNVj3qRr
 ```
 ## Level 11
 The password is stored in the file data.txt where all lowercase (a-z) and uppercase (A-Z) letters have been rotated by 13 positions. We can use tr command to translate. Acoording to ROT13, we should convert the set of letters 'n-z' to 'a-m' and 'N-Z' to 'A-M'.
@@ -169,11 +169,11 @@ ssh bandit11@bandit.labs.overthewire.org -p 2220
 ls
 cat data.txt
 cat data.txt | tr 'n-za-mN-ZA-M' 'a-zA-Z'
-exit -d
+exit 
 ```
 Password for level 12
 ```
-JVNBBFSmZwKKOP0XbFXOoW8chDz5yVRv
+7x16WNeHIi5YkIhWsfFIqoognUTyj9Q4
 ```
 ## Level 12
 The password for the next level is stored in the file data.txt, which is a hexdump of a file that has been repeatedly compressed. We need to create a directory under /tmp in which we can work using mkdir. First we make a directory '/tmp/tempo' and copy the file data.txt into the directory using cp command. Then we enter the directory using cd command. Then we rename the file using mv command so it is easier to operate on the file contents. The data is in hexdump format. To read the contents from a hexdump of a file, xxd -r is used. Using file command tells that 'mycompdata' is a gzip type compressed file and 'mydata' is a text file. It is said that the file is compressed repeatedly. To retrieve the text, we need to decompress repeatedly.
